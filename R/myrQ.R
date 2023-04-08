@@ -23,11 +23,14 @@ myrQ <- function(data) {
     # Find the standard normal quantile and put it in vector
     norm_quant[j] <- qnorm(p_value)
   }
+
+  # Define necessary variables for rQ equation (JW 4-31)
   xbar <- mean(s_quant)
   qbar <- mean(norm_quant)
   numerator <- 0
   denominator1 <- 0
   denominator2 <- 0
+
   for (j in 1:n) {
     numerator <- numerator + (s_quant[j] - xbar)*(norm_quant[j] - qbar)
     denominator1 <- denominator1 + (s_quant[j] - xbar)^2
