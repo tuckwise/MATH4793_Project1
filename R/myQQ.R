@@ -5,7 +5,7 @@
 #' @return returns a QQ-plot of the given data
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{myQQ(data)}
 myQQ <- function(data) {
 
   # Define the number of observations and sort data in ascending order
@@ -13,7 +13,7 @@ myQQ <- function(data) {
   sorted <- sort(data)
 
   # Create vectors for the sample quantiles and standard normal quantiles
-  s_quant <- quantile(sorted, probs = seq(0, 1, length.out = n + 1))
+  s_quant <- quantile(sorted, probs = seq(0, 1, length.out = n ))
   norm_quant <- vector(mode = "numeric", length = n)
 
   for (j in 1:n) {
@@ -27,10 +27,13 @@ myQQ <- function(data) {
 
   # Create a Q-Q plot with jitter to account for possible overlaps
   qq_plot <- ggplot() +
-    geom_point(aes(x = norm_quant, y = sorted), position = position_jitter(width = 0.1, height = 0.1)) +
+    geom_point(aes(x = norm_quant, y = s_quant), position = position_jitter(width = 0.1, height = 0.1)) +
     theme_minimal() +
     labs(title = "Q-Q Plot",
          x = "Theoretical Quantiles",
          y = "Sample Quantiles")
   return(qq_plot)
 }
+data <- read.table("/Users/tuckercapps/Downloads/T4-6.DAT")
+X1 <- data[,1]
+myQQ(X1)

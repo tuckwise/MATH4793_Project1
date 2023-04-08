@@ -1,12 +1,12 @@
 #' uniNormTest
 #'
-#' @param data # data in the form of dataframe, matrix, or vector
+#' @param data data in the form of dataframe, matrix, or vector
 #'
-#' @return # returns whether or not variables in a dataframe are normally distributed
+#' @return returns whether or not variables in a dataframe are normally distributed
 #' @export
 #'
-#' @examples
-#' \dontrun{uniNormTest(data)}
+#' @examples \dontrun{uniNormTest(data)}
+#'
 uniNormTest <- function(data) {
 
   # Define the number of observations and variables in the data
